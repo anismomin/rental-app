@@ -1,0 +1,36 @@
+<ion-content class="authScreens signup">
+  <div class="form-center">
+    <div padding class="signUpHeading">
+      <div class="logo"></div> 
+      <h2>Sign Up</h2>
+    </div>
+    <ion-list  inset>
+        <ion-item>
+          <ion-icon ios="ios-contact" md="md-contact" item-left></ion-icon>
+          <ion-input type="text"  placeholder="Username" [(ngModel)]="creds.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+          <ion-input type="email" placeholder="Email" [(ngModel)]="creds.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon ios="ios-lock" md="md-lock" item-left></ion-icon>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="creds.password"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <div class="signInBtnWrap" padding-horizontal>
+        <button class="no-radius" secondary block (click)="signup(creds)">SIGN UP</button>
+      </div>
+      
+      <div padding-horizontal class="loginRedirect">
+        <p>Already have an account?</p>
+        <button clear (click)="gotoPage(_signInPage)">SIGN IN</button>
+      </div>
+
+    
+    </div>
+</ion-content>

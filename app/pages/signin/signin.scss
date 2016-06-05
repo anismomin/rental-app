@@ -1,0 +1,117 @@
+.authScreens {
+  	background: url('../../img/bg.jpg') transparent;
+  	background-size: 100%;
+  	color:#fff;
+	text-align:center;
+	
+	/**
+	 * Center Form container
+	 */
+	scroll-content {
+	  display: table !important;
+	  width: 100% !important;
+	  height: 100% !important;
+	}
+
+	.form-center {
+	  display: table-cell;
+	  vertical-align: middle;
+	  text-align: center;
+	  width:100%;
+	}
+
+	.signUpHeading {
+		padding-bottom:0px;
+	}
+
+	.logo {
+		width: 45px;
+		height:53px;
+		background: url('../../img/logo.png') center center no-repeat transparent;
+		margin:auto;
+		background-size: 100%;
+	}
+
+	h2 {
+		font-weight:300;
+		font-size:32px;
+		margin:3px 0px 0px 3px;
+	}
+
+	p {
+		color:#fff;
+	}
+	
+	a {
+		color:#fff;
+		text-decoration: underline;
+	}
+
+  	.item {
+  		background: none;
+  		border-bottom:1px solid #5c739f !important;
+		
+		.item-inner {
+			border:none;
+		}
+
+  		input {
+  			color:#fff;
+  		}
+
+  		ion-icon {
+	  		color:#fff;
+	  		opacity: 0.7;
+	  	}
+  	}
+
+  	.signInBtnWrap {
+  		padding-top:2px;
+  		padding-bottom:5px;
+  	}
+
+	.loginRedirect {
+  		
+		p {
+			margin-bottom:0px;
+		}
+		
+  		button {
+			color:#fff;
+			margin-bottom:18px;
+
+			padding:8px 0 2px 0;
+			height:auto;
+			display:inline-block;
+			border-bottom:1px solid #fff;
+  		}
+  	}
+
+  	.socialLoginBtn {
+  		padding-top:0px;
+  		
+  		button {
+  			width:40px;
+  			height:40px;
+  			margin:6px;
+  		}
+  		
+  		ion-icon {
+  			font-size:18px;
+  		}
+  	}
+
+}
+
+.platform-android {
+	.authScreens .item {
+		padding-left: 16px;
+
+		.item-inner {
+			margin-left:0px;
+		}
+	}
+}
+
+
+

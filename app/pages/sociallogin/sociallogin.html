@@ -1,0 +1,22 @@
+<ion-content padding class="authScreens sociallogin">
+  <div class="form-center">
+    <div padding class="signUpHeading">
+      <div class="logo"></div>
+      <h4>IZEA connects influential contnet creators with the world’s biggest brands</h4>
+    </div>
+    
+    <div padding>
+      <button facebook class="no-radius" block (click)="connectFb()">
+        <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>CONNECT FACEBOOK
+      </button>
+      <br>
+      <button class="no-radius" secondary block (click)="getdetails()">
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon>GET DETAIL
+      </button>
+    </div>
+    <div padding-horizontal class="loginRedirect">
+      <p>Don't have an account?</p>
+      <button clear (click)="gotoPage(_signUpPage)">SIGN UP NOW</button>
+    </div>
+  </div>
+</ion-content>

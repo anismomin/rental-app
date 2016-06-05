@@ -1,0 +1,40 @@
+<ion-content class="authScreens signin" scroll="true">
+  <div class="form-center">  
+    <div padding class="signUpHeading">
+      <div class="logo"></div>
+      <h2>Sign In</h2>
+    </div>
+    <ion-list inset padding-horizontal>
+        <ion-item>
+          <ion-icon ios="ios-contact" md="md-contact" item-left></ion-icon>
+          <ion-input type="text"  placeholder="Username" [(ngModel)]="creds.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon ios="ios-lock" md="md-lock" item-left></ion-icon>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="creds.password"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <div class="signInBtnWrap" padding>
+      <button class="no-radius" secondary block (click)="signin(creds)">SIGN IN</button>
+    </div>
+    <div padding-horizontal class="loginRedirect">
+      <p>Don't have an account?</p>
+      <button clear (click)="gotoPage(_signUpPage)">SIGN UP NOW</button>
+    </div>
+    
+    <div padding class="socialLoginBtn">
+      <button round facebook>
+        <ion-icon ios="logo-facebook" md="logo-facebook" ></ion-icon>
+      </button>
+      <button round twitter>
+        <ion-icon ios="logo-twitter" md="logo-twitter" ></ion-icon>
+      </button>
+      <button round instagram>
+        <ion-icon  ios="logo-instagram" md="logo-instagram" ></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-content>

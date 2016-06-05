@@ -1,0 +1,28 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700);
+body {
+	font-family: lato;
+
+	.no-radius {
+		border-radious:0px;
+	}
+
+	.bar-button-clear {
+		background-color: transparent;
+	}
+}
+
+
+
+@import "../pages/signup/signup";
+@import "../pages/signin/signin";
+@import "../pages/camera/camera";
+@import "../pages/map/map";
+@import "../pages/browser/browser";

@@ -1,0 +1,41 @@
+
+<ion-navbar *navbar primary>
+  <ion-title>
+    Location
+  </ion-title>
+  <ion-buttons clear secondary end>
+    <button (click)="adMarker()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      Add Marker
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="map">
+	<sebm-google-map [latitude]="lat" [longitude]="lng">
+  <sebm-google-map-marker 
+        *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m.label, i)"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="m.label"
+        [markerDraggable]="m.draggable"
+        [iconUrl]="m.icon">
+        
+      <sebm-google-map-info-window>
+
+      <ion-list no-lines>
+        <ion-item>
+          <ion-thumbnail item-left>
+            <img class="avatar" src="http://media3.popsugar-assets.com/files/2015/06/17/859/n/1922283/c2bbcc0f_edit_img_image_1090627_1434569298_PSRUSH_0617_JonSnow_061715_SQUARE/i/Reasons-People-Love-Game-Thrones-Jon-Snow-Video.jpg">
+          </ion-thumbnail>
+          <h2>John Snow</h2>
+        </ion-item>
+    </ion-list>
+
+      </sebm-google-map-info-window>
+      
+    </sebm-google-map-marker>
+
+    </sebm-google-map>
+</ion-content>
