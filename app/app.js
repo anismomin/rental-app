@@ -10,12 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
-var signup_1 = require('./pages/signup/signup');
+var sociallogin_1 = require('./pages/sociallogin/sociallogin');
+//com.ionicframework.rentalapp770963
 var MyApp = (function () {
-    //rootPage: any = SignIn;
-    //rootPage: any = SocialLogin;
     function MyApp(platform) {
-        this.rootPage = signup_1.SignUp;
+        //rootPage: any = SignUp;
+        //rootPage: any = SignIn;
+        this.rootPage = sociallogin_1.SocialLogin;
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.

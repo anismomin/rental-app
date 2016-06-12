@@ -1,6 +1,7 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {NgZone} from '@angular/core';
 import {Camera} from 'ionic-native';
+
 import {SignIn} from './../signin/signin';
 import {SocialLogin} from './../sociallogin/sociallogin';
 
@@ -9,9 +10,10 @@ import {SocialLogin} from './../sociallogin/sociallogin';
 })
 export class CameraPage {
 
+    public _socialLogin = SocialLogin;
     public _signInPage = SignIn;
 	public image = null;
-
+    
     constructor(private nav: NavController, public zone: NgZone) {
 		
     }
@@ -31,13 +33,6 @@ export class CameraPage {
             this.zone.run(() => this.image = imgdata);
         }, (error) => {
             alert(error);
-        });
-    }
-
-    logout() {
-        facebookConnectPlugin.logout((response) => {
-            //alert(JSON.stringify(response));
-            this.nav.rootNav.setRoot(SocialLogin);
         });
     }
 

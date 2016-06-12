@@ -26,12 +26,12 @@ var AuthService = (function () {
     function AuthService(http, navcontroller) {
         this.http = http;
         this.navcontroller = navcontroller;
-        this.ApiUrl = 'http://localhost:3333';
+        this.ApiUrl = 'http://localhost:3000';
         this.isLoggedin = false;
         this.AuthToken = null;
     }
     AuthService.prototype.storeUserCredentials = function (token) {
-        window.localStorage.setItem('classified_jwt', token);
+        window.localStorage.setItem('local_token', token);
         this.useCredentials(token);
     };
     AuthService.prototype.useCredentials = function (token) {
@@ -39,18 +39,18 @@ var AuthService = (function () {
         this.AuthToken = token;
     };
     AuthService.prototype.loadUserCredentials = function () {
-        var token = window.localStorage.getItem('classified_jwt');
+        var token = window.localStorage.getItem('local_token');
         this.useCredentials(token);
     };
     AuthService.prototype.destroyUserCredentials = function () {
         this.isLoggedin = false;
         this.AuthToken = null;
-        window.localStorage.getItem('classified_jwt');
+        window.localStorage.getItem('local_token');
     };
     AuthService.prototype.login = function (user) {
         var _this = this;
         var headers = new http_1.Headers();
-        var creds = "username=" + user.username + "&password=" + user.password;
+        var creds = "email=" + user.email + "&password=" + user.password;
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post(this.ApiUrl + '/authenticate', creds, { headers: headers })
             .map(function (res) {
@@ -60,7 +60,7 @@ var AuthService = (function () {
             .delay(3000);
     };
     AuthService.prototype.register = function (user) {
-        var creds = "username=" + user.username + "&password=" + user.password + "&email=" + user.email;
+        var creds = "name=" + user.name + "&email=" + user.email + "&password=" + user.password;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post(this.ApiUrl + '/adduser', creds, { headers: headers })

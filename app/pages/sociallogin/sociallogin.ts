@@ -1,54 +1,56 @@
-import {Page, NavController, NavParams} from 'ionic-angular';
+import {Page, NavController, NavParams, Storage, LocalStorage, Platform } from 'ionic-angular';
+import {NgZone} from '@angular/core';
+//import {Facebook} from 'ionic-native';
+
 import {AuthService} from './../../services/AuthService';
+import {FbProvider} from './../../services/fbAuth';
 import {TabsPage} from './../tabs/tabs';
 import {SignUp} from './../signup/signup';
-import {Facebook} from 'ionic-native';
+import {SignIn} from './../signin/signin';
+import {Profile} from './../profile/profile';
+
 
 @Page({
 	templateUrl: 'build/pages/sociallogin/sociallogin.html',
-  	providers: [AuthService]
+	providers: [AuthService, FbProvider]
 })
 export class SocialLogin {
 	public _homePage = TabsPage;
 	public _signUpPage = SignUp;
-	public creds = null;
-	public loginResponse = null;
-	isLoggedin = false;
+	public _signInPage = SignIn;
+	public _profilePage = Profile;
 
-	constructor(private nav: NavController, private _authService: AuthService) {
+	public local: Storage = new Storage(LocalStorage);
+	
+
+	constructor(private nav: NavController, public platform: Platform, public fb: FbProvider) {
 		
+		this.local.get('ionicAuth.fb_token').then((data) => {
+			if (data != null) {
+				//this.token = JSON.parse(data)
+				this.nav.setRoot(this._homePage);
+			};
+		});
+
 	}
 
 	connectFb() {
-
-		facebookConnectPlugin.login(['email'], (response) => {
-            //alert('Logged in');
-            alert(JSON.stringify(response.authResponse));
-            this.nav.setRoot(this._homePage);
-        }, (error) => {
-            alert(error);
-        });
+		
+		if (this.platform.is('cordova')) {
+			this.fb.login().then(() => {
+				this.fb.getCurrentUserProfile().then(
+					(profileData) => {
+						
+						this.local.set('ionicAuth.profile', JSON.stringify(profileData)).then(() => {
+							this.nav.rootNav.setRoot(this._homePage);	
+						});
+						//alert(JSON.stringify(profileData));
+					}
+				);
+			});
+		}
 	}
 
-
-    getdetails() {
-        facebookConnectPlugin.getLoginStatus((response) => {
-            if (response.status == "connected") {
-                facebookConnectPlugin.api('/' + response.authResponse.userID + '?fields=id,name,gender', [],
-					(result) => {
-						this.nav.setRoot(this._homePage);
-						alert(JSON.stringify(result));
-					},
-					(error) => {
-						alert(error);
-					}
-                );
-            }
-            else {
-                alert('Not logged in');
-            }
-        });
-    }
 
 	gotoPage(page) {
 		this.nav.push(page);

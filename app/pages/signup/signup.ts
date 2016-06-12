@@ -27,7 +27,7 @@ export class SignUp {
 
 	signup(creds) {
 
-		this.nav.setRoot(this._homePage);
+		this.nav.rootNav.setRoot(this._homePage);
 		
 		// this._authService.register(creds)
 		// 	.subscribe(
@@ -48,7 +48,11 @@ export class SignUp {
 	}
 
 	getSignin() {
-		this.nav.setRoot(this._signInPage);
+		this.nav.pop(this._signInPage);
+	}
+
+	gotoPage(page) {
+		this.nav.push(page);
 	}
 }
 

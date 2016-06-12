@@ -1,15 +1,13 @@
 <ion-navbar *navbar primary>
   	<ion-title>Camera</ion-title>
-    
     <ion-buttons clear secondary end>
-	    <button (click)="logout()">
-      		<ion-icon ios="ios-power" md="md-power"></ion-icon>
-    	</button>
-  	</ion-buttons>
+      <button (click)="takepic()">
+          <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+      </button>
+    </ion-buttons>
 </ion-navbar>
 
 <ion-content padding class="page1">
-  <button (click)="takepic()">Click</button>
   <ion-card>
       <img *ngIf="image" [src]="image">
   </ion-card>

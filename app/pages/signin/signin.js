@@ -27,17 +27,22 @@ var SignIn = (function () {
         };
     }
     SignIn.prototype.signin = function (creds) {
-        var _this = this;
-        this._authService.login(creds)
-            .subscribe(function (data) {
-            if (data.success) {
-                _this.loginResponse = JSON.stringify(data);
-                console.log(_this.loginResponse);
-            }
-        }, function (error) { return console.log(error); }, function () {
-            console.log(_this.loginResponse);
-            _this.nav.setRoot(_this._homePage);
-        });
+        this.nav.setRoot(this._homePage);
+        return;
+        // this._authService.login(creds)
+        // 	.subscribe(
+        // 	data => {
+        // 		if (data.success) {
+        // 			this.loginResponse = JSON.stringify(data);
+        // 			console.log(this.loginResponse);
+        // 		}
+        // 	},
+        // 	error => console.log(error),
+        // 	() => {
+        // 		console.log(this.loginResponse);
+        // 		this.nav.setRoot(this._homePage);
+        // 	}
+        // 	);
     };
     SignIn.prototype.gotoPage = function (page) {
         this.nav.push(page);

@@ -22,7 +22,7 @@ export class SignIn {
 	}
 
 	signin(creds) {
-		this.nav.setRoot(this._homePage);
+		this.nav.rootNav.setRoot(this._homePage);
 		return;
 
 		

@@ -9,11 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
+var core_1 = require('@angular/core');
 var ionic_native_1 = require('ionic-native');
-var Page1 = (function () {
-    function Page1(ngzone) {
+var signin_1 = require('./../signin/signin');
+var sociallogin_1 = require('./../sociallogin/sociallogin');
+var CameraPage = (function () {
+    function CameraPage(nav, zone) {
+        this.nav = nav;
+        this.zone = zone;
+        this._signInPage = signin_1.SignIn;
+        this.image = null;
     }
-    Page1.prototype.takepic = function () {
+    CameraPage.prototype.takepic = function () {
         var _this = this;
         var options = {
             destinationType: 0,
@@ -25,17 +32,24 @@ var Page1 = (function () {
         };
         ionic_native_1.Camera.getPicture(options).then(function (data) {
             var imgdata = "data:image/jpeg;base64," + data;
-            _this.image = imgdata;
+            _this.zone.run(function () { return _this.image = imgdata; });
         }, function (error) {
             alert(error);
         });
     };
-    Page1 = __decorate([
+    CameraPage.prototype.logout = function () {
+        var _this = this;
+        facebookConnectPlugin.logout(function (response) {
+            //alert(JSON.stringify(response));
+            _this.nav.rootNav.setRoot(sociallogin_1.SocialLogin);
+        });
+    };
+    CameraPage = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/page1/page1.html',
+            templateUrl: 'build/pages/camera/camera.html',
         }), 
-        __metadata('design:paramtypes', [Object])
-    ], Page1);
-    return Page1;
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, core_1.NgZone])
+    ], CameraPage);
+    return CameraPage;
 }());
-exports.Page1 = Page1;
+exports.CameraPage = CameraPage;

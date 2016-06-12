@@ -12,16 +12,15 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 
 export class IUser {
-    username: string;
+    name: string;
     email: string;
     password: string;
 }
 
 @Injectable()
 export class AuthService {
-
     
-    ApiUrl = 'http://localhost:3333';    
+    ApiUrl = 'http://localhost:3000';    
     isLoggedin = false;
     AuthToken = null;
     
@@ -29,8 +28,8 @@ export class AuthService {
 
     }
 
-     storeUserCredentials(token) {
-        window.localStorage.setItem('classified_jwt', token);
+    storeUserCredentials(token) {
+        window.localStorage.setItem('local_token', token);
         this.useCredentials(token);
     }
     
@@ -40,20 +39,20 @@ export class AuthService {
     }
     
     loadUserCredentials() {
-        var token = window.localStorage.getItem('classified_jwt');
+        var token = window.localStorage.getItem('local_token');
         this.useCredentials(token);
     }
     
     destroyUserCredentials() {
         this.isLoggedin = false;
         this.AuthToken = null;
-        window.localStorage.getItem('classified_jwt');
+        window.localStorage.getItem('local_token');
     }
 
     login(user) {
         
         var headers = new Headers();
-        var creds = "username=" + user.username + "&password=" + user.password;
+        var creds = "email=" + user.email + "&password=" + user.password;
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post(this.ApiUrl+'/authenticate', creds, {headers: headers})
             .map(res => {
@@ -65,7 +64,7 @@ export class AuthService {
 
     register(user ) {
         
-        var creds = "username=" + user.username + "&password=" + user.password+ "&email=" + user.email;
+        var creds = "name=" + user.name + "&email=" + user.email + "&password=" + user.password;
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post(this.ApiUrl+'/adduser', creds, {headers: headers})

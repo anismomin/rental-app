@@ -9,15 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
-var Page2 = (function () {
-    function Page2() {
+var Browser = (function () {
+    //ionic plugin add cordova-plugin-inappbrowser
+    function Browser() {
     }
-    Page2 = __decorate([
+    Browser.prototype.launch = function (url) {
+        open(url, 'system', 'location=yes');
+    };
+    Browser = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/page2/page2.html',
+            templateUrl: 'build/pages/browser/browser.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], Page2);
-    return Page2;
+    ], Browser);
+    return Browser;
 }());
-exports.Page2 = Page2;
+exports.Browser = Browser;

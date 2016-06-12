@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
-var page1_1 = require('../page1/page1');
-var page2_1 = require('../page2/page2');
-var page3_1 = require('../page3/page3');
+var camera_1 = require('../camera/camera');
+var browser_1 = require('../browser/browser');
+var map_1 = require('../map/map');
 var TabsPage = (function () {
     function TabsPage() {
         // this tells the tabs component which Pages
         // should be each tab's root Page
-        this.tab1Root = page1_1.Page1;
-        this.tab2Root = page2_1.Page2;
-        this.tab3Root = page3_1.Page3;
+        this.tab1Root = camera_1.CameraPage;
+        this.tab2Root = browser_1.Browser;
+        this.tab3Root = map_1.Map;
     }
     TabsPage = __decorate([
         ionic_angular_1.Page({

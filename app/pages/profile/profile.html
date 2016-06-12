@@ -1,0 +1,31 @@
+<ion-navbar *navbar primary>
+  	<ion-title>
+    	Profile
+  	</ion-title>
+  	<ion-buttons clear secondary end>
+	    <button (click)="logout()">
+      		<ion-icon ios="ios-power" md="md-power"></ion-icon>
+    	</button>
+  	</ion-buttons>
+</ion-navbar>
+
+<ion-content class="profile">
+  <ion-card>
+    <img src="{{ profile.picture.data.url }}" />
+    <ion-card-content>
+        <ion-card-title>
+            {{ profile.name }}
+        </ion-card-title>
+        <p>
+         Gender: {{ profile.gender }}
+        </p>
+        <p>
+         Email: {{ profile.email }}
+        </p>
+        <p>
+         Facebook ID: {{ profile.id }}
+        </p>
+        
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -12,17 +12,47 @@ var ionic_angular_1 = require('ionic-angular');
 var AuthService_1 = require('./../../services/AuthService');
 var tabs_1 = require('./../tabs/tabs');
 var signup_1 = require('./../signup/signup');
+var signin_1 = require('./../signin/signin');
 var SocialLogin = (function () {
     function SocialLogin(nav, _authService) {
         this.nav = nav;
         this._authService = _authService;
         this._homePage = tabs_1.TabsPage;
         this._signUpPage = signup_1.SignUp;
+        this._signInPage = signin_1.SignIn;
         this.creds = null;
         this.loginResponse = null;
         this.isLoggedin = false;
+        if (window.localStorage.getItem('access_token')) {
+            this.nav.setRoot(this._homePage);
+        }
     }
-    SocialLogin.prototype.facebookAuth = function () {
+    SocialLogin.prototype.connectFb = function () {
+        var _this = this;
+        facebookConnectPlugin.login(['email', 'public_profile'], function (response) {
+            //alert('Logged in');
+            //console.log(response.authResponse);
+            window.localStorage.setItem('access_token', response.authResponse.accessToken);
+            _this.getdetails();
+        }, function (error) {
+            alert(error);
+        });
+    };
+    SocialLogin.prototype.getdetails = function () {
+        var _this = this;
+        facebookConnectPlugin.getLoginStatus(function (response) {
+            if (response.status == "connected") {
+                facebookConnectPlugin.api('/' + response.authResponse.userID + '?fields=id,name,gender', ['public_profile'], function (result) {
+                    _this.nav.setRoot(_this._homePage);
+                    //alert(JSON.stringify(result));
+                }, function (error) {
+                    alert(error);
+                });
+            }
+            else {
+                _this.nav.push(_this._signInPage);
+            }
+        });
     };
     SocialLogin.prototype.gotoPage = function (page) {
         this.nav.push(page);

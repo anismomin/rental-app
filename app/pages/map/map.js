@@ -9,30 +9,75 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
-var Page3 = (function () {
-    function Page3() {
-        this.map = null;
+var core_1 = require('angular2-google-maps/core');
+var Map = (function () {
+    function Map() {
+        this.zoom = 15;
+        this.lat = -37.7863713;
+        this.lng = 175.2796333;
+        this.markers = [
+            {
+                lat: -17.7863713,
+                lng: 105.2796333,
+                draggable: false,
+                icon: 'img/logo.png'
+            },
+            {
+                lat: -87.8253519,
+                lng: -175.30493468,
+                draggable: false,
+                icon: 'img/logo.png'
+            }
+        ];
         this.loadMap();
     }
-    Page3.prototype.loadMap = function () {
-        //let options = { timeout: 10000, enableHighAccuracy: true };
-        //Geolocation.getCurrentPosition(options).then((position) => {
-        //let latLng = new google.maps.latLng(position.coords.latitude, position.coords.longitude);
-        //let latLng = new google.maps.LatLng(-34.9290, 138.6010);
-        // let mapOptions = {
-        //  center: latLng,
-        //  zoom: 15,
-        //  mapTypeId: google.maps.MapTypeId.ROADMAP
-        // };
-        // this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        //});
+    Map.prototype.loadMap = function () {
+        var _this = this;
+        var options = { timeout: 10000, enableHighAccuracy: true };
+        navigator.geolocation.getCurrentPosition(function (position) {
+            _this.lat = position.coords.latitude;
+            _this.lng = position.coords.longitude;
+            var pointer = {
+                lat: _this.lat,
+                lng: _this.lng,
+                draggable: false,
+                icon: 'img/logo.png'
+            };
+            _this.markers.push(pointer);
+        }, function (error) {
+            console.log(error);
+        }, options);
     };
-    Page3 = __decorate([
+    Map.prototype.addMarker = function () {
+        var _this = this;
+        var options = { timeout: 10000, enableHighAccuracy: true };
+        navigator.geolocation.getCurrentPosition(function (position) {
+            _this.lat = position.coords.latitude;
+            _this.lng = position.coords.longitude;
+            var pointer = {
+                lat: _this.lat,
+                lng: _this.lng,
+                draggable: false,
+                icon: 'img/logo.png'
+            };
+            _this.markers.push(pointer);
+        }, function (error) {
+            console.log(error);
+        }, options);
+        // let content = "<h4>Information!</h4>";
+        // this.addInfoWindow(marker, content);
+    };
+    Map.prototype.clickedMarker = function (label, index) {
+        console.log("clicked the marker: " + (label || index));
+    };
+    Map = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/page3/page3.html'
+            templateUrl: 'build/pages/map/map.html',
+            directives: [core_1.ANGULAR2_GOOGLE_MAPS_DIRECTIVES],
+            providers: [core_1.ANGULAR2_GOOGLE_MAPS_PROVIDERS]
         }), 
         __metadata('design:paramtypes', [])
-    ], Page3);
-    return Page3;
+    ], Map);
+    return Map;
 }());
-exports.Page3 = Page3;
+exports.Map = Map;

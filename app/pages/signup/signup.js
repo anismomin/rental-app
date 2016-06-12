@@ -22,6 +22,7 @@ var SignUp = (function () {
         this.creds = null;
         this.loginResponse = null;
         this.isLoggedin = false;
+        this.isLoggedin = false;
         this.creds = {
             username: '',
             email: '',
@@ -47,8 +48,8 @@ var SignUp = (function () {
         // 	}
         // 	);
     };
-    SignUp.prototype.gotoPage = function (page) {
-        this.nav.push(page);
+    SignUp.prototype.getSignin = function () {
+        this.nav.setRoot(this._signInPage);
     };
     SignUp = __decorate([
         ionic_angular_1.Page({

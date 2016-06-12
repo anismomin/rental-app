@@ -1,4 +1,4 @@
-<ion-content padding class="authScreens sociallogin">
+<ion-content class="authScreens">
   <div class="form-center">
     <div padding class="signUpHeading">
       <div class="logo"></div>
@@ -10,13 +10,13 @@
         <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>CONNECT FACEBOOK
       </button>
       <br>
-      <button class="no-radius" secondary block (click)="getdetails()">
-        <ion-icon ios="ios-mail" md="md-mail"></ion-icon>GET DETAIL
+      <button class="no-radius" secondary block (click)="gotoPage(_signUpPage)">
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon>CREATE ACCOUNT
       </button>
     </div>
     <div padding-horizontal class="loginRedirect">
-      <p>Don't have an account?</p>
-      <button clear (click)="gotoPage(_signUpPage)">SIGN UP NOW</button>
+      <p>Already have an account?</p>
+      <button clear (click)="gotoPage(_signInPage)">SIGN IN NOW</button>
     </div>
   </div>
 </ion-content>
