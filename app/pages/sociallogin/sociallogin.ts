@@ -1,5 +1,4 @@
 import {Page, NavController, NavParams, Storage, LocalStorage, Platform } from 'ionic-angular';
-import {NgZone} from '@angular/core';
 //import {Facebook} from 'ionic-native';
 
 import {AuthService} from './../../services/AuthService';
@@ -9,7 +8,11 @@ import {SignUp} from './../signup/signup';
 import {SignIn} from './../signin/signin';
 import {Profile} from './../profile/profile';
 
-
+/**
+ * Requirement
+ */
+//ionic plugin add cordova-plugin-camera
+//NgZone // RENDER IMAGE AFTER TAKE PHOTO
 @Page({
 	templateUrl: 'build/pages/sociallogin/sociallogin.html',
 	providers: [AuthService, FbProvider]

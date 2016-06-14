@@ -11,7 +11,16 @@ export class Browser {
 
   }
 
-  launch(url){
-	  open(url, 'system', 'location=yes');
-  }
+  
+  system(url) {
+	  // Open in external browser
+	  open(url, '_system', 'location=yes');
+  };
+
+  blank(url) {
+	  // Open in app browser
+	  open(url, '_blank');
+  };
+
+ 
 }

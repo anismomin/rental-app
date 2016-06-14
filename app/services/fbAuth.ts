@@ -1,7 +1,11 @@
 import {Page, Platform, Storage, LocalStorage } from 'ionic-angular';
 import {Injectable} from '@angular/core';
 
-
+/**
+ * Requirement
+ */
+//cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+// create app and get APP_ID and APP NAME
 @Injectable()
 export class FbProvider {
 

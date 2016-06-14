@@ -5,6 +5,11 @@ import {MapsAPILoader, NoOpMapsAPILoader, MouseEvent,
 import * as mapTypes from 'angular2-google-maps/services/google-maps-types';
 import {Geolocation} from 'ionic-native';
 
+/**
+ * requirement
+ */
+//Geolocation
+//"angular2-google-maps": "^0.10.0",
 interface marker {
 	lat: number;
 	lng: number;

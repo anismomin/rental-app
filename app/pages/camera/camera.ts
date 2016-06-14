@@ -5,6 +5,12 @@ import {Camera} from 'ionic-native';
 import {SignIn} from './../signin/signin';
 import {SocialLogin} from './../sociallogin/sociallogin';
 
+/**
+ * Requirement
+ */
+//ionic plugin add cordova-plugin-camera
+//NgZone // RENDER IMAGE AFTER TAKE PHOTO
+
 @Page({
   templateUrl: 'build/pages/camera/camera.html',
 })
